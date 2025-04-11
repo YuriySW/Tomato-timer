@@ -46,6 +46,7 @@ const timer = new TomatoTask('Бег');
 console.log(timer.getObj());
 timer.addCount();
 console.log(timer.getObj());
+
 timer.changeName('Плавание');
 console.log(timer.getObj());
 

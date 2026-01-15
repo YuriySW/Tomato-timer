@@ -811,11 +811,16 @@ try {
 
 /***/ }),
 
-/***/ "./src/js/main.js?f5d0":
+/***/ "./src/js/main.js":
 /*!************************!*\
   !*** ./src/js/main.js ***!
   \************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _tomatoTimer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tomatoTimer */ "./src/js/tomatoTimer.js");
+/* harmony import */ var _tomatoTimer__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tomatoTimer__WEBPACK_IMPORTED_MODULE_0__);
 
 var count = 0;
 var imp = ['default', 'important', 'so-so'];
@@ -832,6 +837,639 @@ document.querySelector('.button-importance').addEventListener('click', function 
       target.classList.remove(imp[i]);
     }
   }
+});
+
+/***/ }),
+
+/***/ "./src/js/task.js":
+/*!************************!*\
+  !*** ./src/js/task.js ***!
+  \************************/
+/***/ (() => {
+
+// class TomatoTask {
+//   #name;
+//   #count;
+//   #id;
+
+//   constructor(name, count = 0) {
+//     if (typeof name === 'string' && name.trim() !== '') {
+//       this.#name = name;
+//       this.#count = count;
+//       this.#id = Array.from(
+//         {length: 8},
+//         () =>
+//           'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'[
+//             Math.floor(Math.random() * 62)
+//           ]
+//       ).join('');
+//     } else {
+//       console.log('Название должно быть String!');
+//       return;
+//     }
+//   }
+
+//   addCount() {
+//     this.#count += 1;
+//   }
+
+//   changeName(newName) {
+//     if (typeof newName === 'string' && newName.trim() !== '') {
+//       this.#name = newName;
+//     } else {
+//       console.log('Название должно быть String!');
+//       return;
+//     }
+//   }
+
+//   getObj() {
+//     return {
+//       id: this.#id,
+//       name: this.#name,
+//       count: this.#count,
+//     };
+//   }
+// }
+
+// const timer = new TomatoTask('Бег');
+// console.log(timer.getObj());
+// timer.addCount();
+// console.log(timer.getObj());
+// timer.changeName('Плавание');
+// console.log(timer.getObj());
+
+// const work = new TomatoTask('Работа');
+// timer.addCount();
+// console.log(work.getObj());
+
+/***/ }),
+
+/***/ "./src/js/tomatoTimer.js":
+/*!*******************************!*\
+  !*** ./src/js/tomatoTimer.js ***!
+  \*******************************/
+/***/ (() => {
+
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
+function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
+function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
+function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+// ============= TASK CLASSES =============
+var Task = /*#__PURE__*/function () {
+  function Task(text) {
+    _classCallCheck(this, Task);
+    this.id = this.generateId();
+    this.text = text;
+    this.count = 0;
+    this.importance = 'default';
+  }
+  return _createClass(Task, [{
+    key: "generateId",
+    value: function generateId() {
+      return Date.now() + Math.random().toString(36).substr(2, 9);
+    }
+  }, {
+    key: "increment",
+    value: function increment() {
+      this.count++;
+    }
+  }]);
+}();
+var ImportantTask = /*#__PURE__*/function (_Task) {
+  function ImportantTask(text) {
+    var _this;
+    _classCallCheck(this, ImportantTask);
+    _this = _callSuper(this, ImportantTask, [text]);
+    _this.importance = 'important';
+    return _this;
+  }
+  _inherits(ImportantTask, _Task);
+  return _createClass(ImportantTask);
+}(Task);
+var StandardTask = /*#__PURE__*/function (_Task2) {
+  function StandardTask(text) {
+    var _this2;
+    _classCallCheck(this, StandardTask);
+    _this2 = _callSuper(this, StandardTask, [text]);
+    _this2.importance = 'so-so';
+    return _this2;
+  }
+  _inherits(StandardTask, _Task2);
+  return _createClass(StandardTask);
+}(Task);
+var UnimportantTask = /*#__PURE__*/function (_Task3) {
+  function UnimportantTask(text) {
+    var _this3;
+    _classCallCheck(this, UnimportantTask);
+    _this3 = _callSuper(this, UnimportantTask, [text]);
+    _this3.importance = 'default';
+    return _this3;
+  }
+  _inherits(UnimportantTask, _Task3);
+  return _createClass(UnimportantTask);
+}(Task); // ============= TOMATO TIMER (SINGLETON) =============
+var TomatoTimer = /*#__PURE__*/function () {
+  function TomatoTimer() {
+    var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    _classCallCheck(this, TomatoTimer);
+    if (TomatoTimer.instance) {
+      return TomatoTimer.instance;
+    }
+    this.times = {
+      work: (config.workTime || 25) * 60 * 1000,
+      shortBreak: (config.shortBreak || 5) * 60 * 1000,
+      longBreak: (config.longBreak || 15) * 60 * 1000
+    };
+    this.tasks = [];
+    this.activeTask = null;
+    this.timerState = 'stopped';
+    this.timeLeft = this.times.work;
+    this.timerInterval = null;
+    this.onTimerUpdate = null;
+    TomatoTimer.instance = this;
+  }
+  return _createClass(TomatoTimer, [{
+    key: "addTask",
+    value: function addTask(task) {
+      this.tasks.push(task);
+      return task;
+    }
+  }, {
+    key: "removeTask",
+    value: function removeTask(taskId) {
+      var index = this.tasks.findIndex(function (t) {
+        return t.id === taskId;
+      });
+      if (index !== -1) {
+        if (this.activeTask && this.activeTask.id === taskId) {
+          this.stopTimer();
+          this.activeTask = null;
+        }
+        this.tasks.splice(index, 1);
+      }
+    }
+  }, {
+    key: "editTask",
+    value: function editTask(taskId, newText) {
+      var task = this.tasks.find(function (t) {
+        return t.id === taskId;
+      });
+      if (task && newText.trim()) {
+        task.text = newText.trim();
+        return task;
+      }
+    }
+  }, {
+    key: "activateTask",
+    value: function activateTask(taskId) {
+      var task = this.tasks.find(function (t) {
+        return t.id === taskId;
+      });
+      if (task) {
+        var wasRunning = this.timerState !== 'stopped';
+        if (wasRunning) {
+          this.stopTimer();
+        }
+        this.activeTask = task;
+        this.timeLeft = this.times.work;
+        this.timerState = 'stopped';
+        return task;
+      }
+    }
+  }, {
+    key: "startTimer",
+    value: function startTimer() {
+      var _this4 = this;
+      if (!this.activeTask) return;
+      if (this.timerState === 'stopped') {
+        this.timerState = 'work';
+        this.timeLeft = this.times.work;
+      }
+      if (this.timerInterval) {
+        clearInterval(this.timerInterval);
+      }
+      this.timerInterval = setInterval(function () {
+        _this4.timeLeft -= 1000;
+        if (_this4.timeLeft <= 0) {
+          _this4.onTimerComplete();
+        }
+        if (_this4.onTimerUpdate) {
+          _this4.onTimerUpdate();
+        }
+      }, 1000);
+    }
+  }, {
+    key: "stopTimer",
+    value: function stopTimer() {
+      if (this.timerInterval) {
+        clearInterval(this.timerInterval);
+        this.timerInterval = null;
+      }
+      this.timerState = 'stopped';
+      this.timeLeft = this.times.work;
+    }
+  }, {
+    key: "onTimerComplete",
+    value: function onTimerComplete() {
+      clearInterval(this.timerInterval);
+      this.timerInterval = null;
+      if (this.timerState === 'work') {
+        this.activeTask.increment();
+        var isLongBreak = this.activeTask.count % 4 === 0;
+        this.timeLeft = isLongBreak ? this.times.longBreak : this.times.shortBreak;
+        this.timerState = 'break';
+        this.playSound();
+        if (this.onTimerUpdate) {
+          this.onTimerUpdate();
+        }
+        this.startTimer();
+      } else if (this.timerState === 'break') {
+        this.timeLeft = this.times.work;
+        this.timerState = 'stopped';
+        this.playSound();
+        if (this.onTimerUpdate) {
+          this.onTimerUpdate();
+        }
+      }
+    }
+  }, {
+    key: "playSound",
+    value: function playSound() {
+      var audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBjeP1fPPfC4GKXzJ8N+UQgwhZrjq66lXFwxJoeHyvWwhBjeO1fPPey4GKXvH79+UQgsfZrfp66lXGAxIouDyvWwhBjaO1fPPey4FKHvH79+UQQsfZrbp66hWGAxIot/yvWsgBjaO1PPPey0FJ3vH79+TQQoeZrbp66hWFwxIot/xvWsgBTWO1PPPei0FJ3rG79+TQQoeZbbp66lWFwxIot/xvWsfBTWN1PPPei0FJ3rG79+TQQoeZbbp66hWFwxGod/xvWsfBTSN1PLPei0EJ3nG79+TQQoeZLbq66hWFgxGod/xvWsfBTSN1PLPeiwEJ3nG79+SQAoeZLbq66lWFwxGod/xvWsfBTON1PLPeiwEJ3nF79+SQAocZLbq66lWFgxGn9/xvWsfBTON1PLPeiwEJnnF79+SQAocZLbq66lWFgxGn9/wvWofBTKN1PLOeiwEJnnF79+SPwoaZLbq66lWFgxGnt/wvWsfBS+N1PLOeivEJXjE79+SPwkaZbbq66lWFgxGnuDwvWofBS+M1PLOeivEJXjE79+SPgkaZbbq66lWFQxGnuDwvWofBS+M1PLOeivEJHjE79+SPgkaZbbq66lWFQxGnuDwvWofBS+M1PLOeivEI3jE79+SPgkaZbbq66lWFQxGnuDwvWofBS+M1PLOeivEI3jE79+SPgkaZbbq66lWFQxGnuDwvWofBS+M1PLOeivEI3jE79+SPgkaZbbq66lWFQxGnuDwvWofBS+M1PLOeivEI3jE79+SPgkaZbbq66lWFQxGnuDwvWofBS6M1PLOeivEI3jE79+SPgkaZbbq66lWFQxGnuDwvWofBS6M1PLOeivEI3jE79+SPgkaZbbq66lWFQxGnuDwvWofBS6M1PLOeivEI3jE79+SPgkaZbbq66lWFQxGnuDwvWofBS6M1PLOeivEI3jE79+SPgkaZbbq66lWFQxGnuDwvWofBS6M1PLOeivEI3jE79+SPgkaZbbq66lWFQxGnuDwvWofBS6M1PLOeivEI3jE79+SPgkaZbbq66lWFQxGnuDwvWofBS6M1PLOeivEI3jE79+SPgkaZbbq66lWFQxGnuDwvWofBS6M1PLOeivEI3jE79+SPgkaZbbq66lWFQxGnuDwvWofBS6M1PLOeivEI3jE79+SPgkaZbbq66lWFQxGnuDwvWofBS6M1PLOeivEI3jE79+SPgkaZbbq66lWFQxGnuDwvWofBS6M1PLOeivEI3jE79+SPgkaZbbq66lWFQxGnuDwvWofBS6M1PLOeivEI3jE79+SPgkaZbbq66lWFQxGnuDwvWofBS6M1PLOeivEI3jE79+SPgkaZbbq66lWFQxGnuDwvWofBS6M1PLOeivEI3jE79+SPgkaZbbq66lWFQ==');
+      audio.play()["catch"](function () {});
+    }
+  }, {
+    key: "getTimeLeft",
+    value: function getTimeLeft() {
+      return this.timeLeft;
+    }
+  }, {
+    key: "getTotalTime",
+    value: function getTotalTime() {
+      var minutes = this.tasks.reduce(function (total, task) {
+        return total + task.count * 25;
+      }, 0);
+      var hours = Math.floor(minutes / 60);
+      var mins = minutes % 60;
+      return {
+        hours: hours,
+        minutes: mins
+      };
+    }
+  }, {
+    key: "isRunning",
+    value: function isRunning() {
+      return this.timerInterval !== null;
+    }
+  }]);
+}(); // ============= RENDER TOMATO =============
+_defineProperty(TomatoTimer, "instance", null);
+var RenderTomato = /*#__PURE__*/function () {
+  function RenderTomato() {
+    _classCallCheck(this, RenderTomato);
+    this.windowPanel = document.querySelector('.window__panel-title');
+    this.windowTaskText = document.querySelector('.window__panel-task-text');
+    this.timerText = document.querySelector('.window__timer-text');
+    this.tasksList = document.querySelector('.tasks__list');
+    this.tasksDeadline = document.querySelector('.tasks__deadline');
+    this.startButton = document.querySelector('.button-primary:not(.task-form__add-button)');
+    this.stopButton = document.querySelector('.button-secondary');
+    this.taskForm = document.querySelector('.task-form');
+    this.taskInput = document.querySelector('#task-name');
+    this.importanceButton = document.querySelector('.button-importance');
+    this.modalOverlay = document.querySelector('.modal-overlay');
+    this.modalDeleteButton = document.querySelector('.modal-delete__delete-button');
+    this.modalCancelButton = document.querySelector('.modal-delete__cancel-button');
+    this.modalCloseButton = document.querySelector('.modal-delete__close-button');
+    this.currentImportance = 'default';
+    this.taskToDelete = null;
+  }
+  return _createClass(RenderTomato, [{
+    key: "renderActiveTask",
+    value: function renderActiveTask(task) {
+      if (task) {
+        this.windowPanel.textContent = task.text;
+        this.windowTaskText.textContent = "\u0422\u043E\u043C\u0430\u0442 ".concat(task.count + 1);
+      } else {
+        this.windowPanel.textContent = 'Выберите задачу';
+        this.windowTaskText.textContent = '';
+      }
+    }
+  }, {
+    key: "renderTimer",
+    value: function renderTimer(milliseconds) {
+      var minutes = Math.floor(milliseconds / 60000);
+      var seconds = Math.floor(milliseconds % 60000 / 1000);
+      this.timerText.textContent = "".concat(String(minutes).padStart(2, '0'), ":").concat(String(seconds).padStart(2, '0'));
+    }
+  }, {
+    key: "renderTasks",
+    value: function renderTasks(tasks, activeTaskId) {
+      var _this5 = this;
+      this.tasksList.innerHTML = '';
+      tasks.forEach(function (task) {
+        var li = document.createElement('li');
+        li.className = "tasks__item ".concat(task.importance);
+        li.dataset.taskId = task.id;
+        var countSpan = document.createElement('span');
+        countSpan.className = 'count-number';
+        countSpan.textContent = task.count;
+        var textButton = document.createElement('button');
+        textButton.className = 'tasks__text';
+        if (task.id === activeTaskId) {
+          textButton.classList.add('tasks__text_active');
+        }
+        textButton.textContent = task.text;
+        textButton.dataset.originalText = task.text;
+        var menuButton = document.createElement('button');
+        menuButton.className = 'tasks__button';
+        var popup = document.createElement('div');
+        popup.className = 'popup';
+        var editButton = document.createElement('button');
+        editButton.className = 'popup__button popup__edit-button';
+        editButton.textContent = 'Редактировать';
+        var deleteButton = document.createElement('button');
+        deleteButton.className = 'popup__button popup__delete-button';
+        deleteButton.textContent = 'Удалить';
+        popup.appendChild(editButton);
+        popup.appendChild(deleteButton);
+        li.appendChild(countSpan);
+        li.appendChild(textButton);
+        li.appendChild(menuButton);
+        li.appendChild(popup);
+        _this5.tasksList.appendChild(li);
+      });
+    }
+  }, {
+    key: "renderTotalTime",
+    value: function renderTotalTime(hours, minutes) {
+      if (hours > 0) {
+        this.tasksDeadline.textContent = "".concat(hours, " \u0447\u0430\u0441").concat(hours > 1 ? 'а' : '', " ").concat(minutes, " \u043C\u0438\u043D");
+      } else if (minutes > 0) {
+        this.tasksDeadline.textContent = "".concat(minutes, " \u043C\u0438\u043D");
+      } else {
+        this.tasksDeadline.textContent = '0 мин';
+      }
+    }
+  }, {
+    key: "toggleTimerButtons",
+    value: function toggleTimerButtons(isRunning) {
+      if (isRunning) {
+        this.startButton.classList.add('hidden');
+        this.stopButton.classList.remove('hidden');
+      } else {
+        this.startButton.classList.remove('hidden');
+        this.stopButton.classList.add('hidden');
+      }
+    }
+  }, {
+    key: "toggleImportance",
+    value: function toggleImportance() {
+      var importances = ['default', 'so-so', 'important'];
+      var currentIndex = importances.indexOf(this.currentImportance);
+      this.currentImportance = importances[(currentIndex + 1) % 3];
+      this.importanceButton.className = "button button-importance ".concat(this.currentImportance);
+    }
+  }, {
+    key: "showModal",
+    value: function showModal(taskId) {
+      this.taskToDelete = taskId;
+      this.modalOverlay.style.display = 'flex';
+    }
+  }, {
+    key: "hideModal",
+    value: function hideModal() {
+      this.taskToDelete = null;
+      this.modalOverlay.style.display = 'none';
+    }
+  }, {
+    key: "clearTaskInput",
+    value: function clearTaskInput() {
+      this.taskInput.value = '';
+      this.currentImportance = 'default';
+      this.importanceButton.className = 'button button-importance default';
+    }
+  }]);
+}(); // ============= CONTROLLER TOMATO =============
+var ControllerTomato = /*#__PURE__*/function () {
+  function ControllerTomato(model, view) {
+    _classCallCheck(this, ControllerTomato);
+    this.model = model;
+    this.view = view;
+    this.init();
+  }
+  return _createClass(ControllerTomato, [{
+    key: "init",
+    value: function init() {
+      var _this6 = this;
+      // Очищаем начальный HTML контент
+      this.view.tasksList.innerHTML = '';
+      this.view.windowPanel.textContent = 'Выберите задачу';
+      this.view.windowTaskText.textContent = '';
+      this.view.tasksDeadline.textContent = '0 мин';
+      this.view.renderTimer(this.model.getTimeLeft());
+      this.updateView();
+      this.attachEventListeners();
+      this.model.onTimerUpdate = function () {
+        _this6.updateView();
+      };
+    }
+  }, {
+    key: "attachEventListeners",
+    value: function attachEventListeners() {
+      var _this7 = this;
+      this.view.startButton.addEventListener('click', function () {
+        return _this7.handleStart();
+      });
+      this.view.stopButton.addEventListener('click', function () {
+        return _this7.handleStop();
+      });
+      this.view.taskForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        _this7.handleAddTask();
+      });
+      this.view.importanceButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        _this7.view.toggleImportance();
+      });
+      this.view.tasksList.addEventListener('click', function (e) {
+        var taskItem = e.target.closest('.tasks__item');
+        if (!taskItem) return;
+        var taskId = taskItem.dataset.taskId;
+        if (e.target.classList.contains('tasks__text')) {
+          _this7.handleActivateTask(taskId);
+        } else if (e.target.classList.contains('tasks__button')) {
+          e.stopPropagation();
+          _this7.handleTogglePopup(taskItem);
+        } else if (e.target.classList.contains('popup__delete-button')) {
+          e.stopPropagation();
+          _this7.view.showModal(taskId);
+          _this7.closeAllPopups();
+        } else if (e.target.classList.contains('popup__edit-button')) {
+          e.stopPropagation();
+          _this7.handleEditTask(taskItem, taskId);
+          _this7.closeAllPopups();
+        }
+      });
+      this.view.modalDeleteButton.addEventListener('click', function () {
+        if (_this7.view.taskToDelete) {
+          _this7.handleDeleteTask(_this7.view.taskToDelete);
+          _this7.view.hideModal();
+        }
+      });
+      this.view.modalCancelButton.addEventListener('click', function () {
+        _this7.view.hideModal();
+      });
+      this.view.modalCloseButton.addEventListener('click', function () {
+        _this7.view.hideModal();
+      });
+      this.view.modalOverlay.addEventListener('click', function (e) {
+        if (e.target === _this7.view.modalOverlay) {
+          _this7.view.hideModal();
+        }
+      });
+      document.addEventListener('click', function (e) {
+        if (!e.target.closest('.tasks__item')) {
+          _this7.closeAllPopups();
+        }
+      });
+    }
+  }, {
+    key: "handleStart",
+    value: function handleStart() {
+      if (!this.model.activeTask) {
+        alert('Выберите задачу из списка');
+        return;
+      }
+      this.model.startTimer();
+      this.view.toggleTimerButtons(true);
+    }
+  }, {
+    key: "handleStop",
+    value: function handleStop() {
+      this.model.stopTimer();
+      this.view.toggleTimerButtons(false);
+      this.updateView();
+    }
+  }, {
+    key: "handleAddTask",
+    value: function handleAddTask() {
+      var text = this.view.taskInput.value.trim();
+      if (!text) return;
+      var task;
+      switch (this.view.currentImportance) {
+        case 'important':
+          task = new ImportantTask(text);
+          break;
+        case 'so-so':
+          task = new StandardTask(text);
+          break;
+        default:
+          task = new UnimportantTask(text);
+      }
+      this.model.addTask(task);
+      this.view.clearTaskInput();
+      this.updateView();
+    }
+  }, {
+    key: "handleActivateTask",
+    value: function handleActivateTask(taskId) {
+      this.model.activateTask(taskId);
+      this.view.toggleTimerButtons(false);
+      this.updateView();
+    }
+  }, {
+    key: "handleDeleteTask",
+    value: function handleDeleteTask(taskId) {
+      this.model.removeTask(taskId);
+      this.updateView();
+    }
+  }, {
+    key: "handleEditTask",
+    value: function handleEditTask(taskItem, taskId) {
+      var _this8 = this;
+      var textButton = taskItem.querySelector('.tasks__text');
+      var originalText = textButton.textContent;
+      var input = document.createElement('input');
+      input.type = 'text';
+      input.className = 'task-name input-primary';
+      input.value = originalText;
+      input.style.width = '100%';
+      input.style.padding = '8px';
+      textButton.style.display = 'none';
+      taskItem.insertBefore(input, textButton);
+      input.focus();
+      input.select();
+      var saveEdit = function saveEdit() {
+        var newText = input.value.trim();
+        if (newText && newText !== originalText) {
+          _this8.model.editTask(taskId, newText);
+        }
+        _this8.updateView();
+      };
+      var cancelEdit = function cancelEdit() {
+        _this8.updateView();
+      };
+      input.addEventListener('blur', saveEdit);
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          saveEdit();
+        } else if (e.key === 'Escape') {
+          e.preventDefault();
+          cancelEdit();
+        }
+      });
+    }
+  }, {
+    key: "handleTogglePopup",
+    value: function handleTogglePopup(taskItem) {
+      var popup = taskItem.querySelector('.popup');
+      var isActive = popup.classList.contains('popup_active');
+      this.closeAllPopups();
+      if (!isActive) {
+        popup.classList.add('popup_active');
+      }
+    }
+  }, {
+    key: "closeAllPopups",
+    value: function closeAllPopups() {
+      document.querySelectorAll('.popup').forEach(function (p) {
+        p.classList.remove('popup_active');
+      });
+    }
+  }, {
+    key: "updateView",
+    value: function updateView() {
+      var activeTaskId = this.model.activeTask ? this.model.activeTask.id : null;
+      this.view.renderTasks(this.model.tasks, activeTaskId);
+      this.view.renderActiveTask(this.model.activeTask);
+      this.view.renderTimer(this.model.getTimeLeft());
+      var _this$model$getTotalT = this.model.getTotalTime(),
+        hours = _this$model$getTotalT.hours,
+        minutes = _this$model$getTotalT.minutes;
+      this.view.renderTotalTime(hours, minutes);
+    }
+  }]);
+}(); // ============= INITIALIZATION =============
+document.addEventListener('DOMContentLoaded', function () {
+  var timer = new TomatoTimer({
+    workTime: 25,
+    shortBreak: 5,
+    longBreak: 15
+  });
+  var view = new RenderTomato();
+  var controller = new ControllerTomato(timer, view);
 });
 
 /***/ }),
@@ -9904,8 +10542,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 // Imports
-var ___HTML_LOADER_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ./js/main.js */ "./src/js/main.js?3207"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_1___ = new URL(/* asset import */ __webpack_require__(/*! ./img/svg/noto_tomato.svg */ "./src/img/svg/noto_tomato.svg"), __webpack_require__.b);
+var ___HTML_LOADER_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ./img/svg/noto_tomato.svg */ "./src/img/svg/noto_tomato.svg"), __webpack_require__.b);
 // Module
 var code = `<!DOCTYPE html>
 <html lang="ru">
@@ -9913,7 +10550,8 @@ var code = `<!DOCTYPE html>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    ${"<" + "script"} defer src="${___HTML_LOADER_IMPORT_0___}">${"<" + "/script"}>
+    <!-- ${"<" + "script"} defer src="js/main.js">${"<" + "/script"}> -->
+
     <title>Tomato timer</title>
   </head>
 
@@ -9921,7 +10559,7 @@ var code = `<!DOCTYPE html>
     <header>
       <section class="header">
         <div class="container header__container">
-          <img src="${___HTML_LOADER_IMPORT_1___}" class="header__logo" alt="Tomato image" />
+          <img src="${___HTML_LOADER_IMPORT_0___}" class="header__logo" alt="Tomato image" />
           <h1 class="header__title">Tomato timer</h1>
         </div>
       </section>
@@ -10038,17 +10676,6 @@ var code = `<!DOCTYPE html>
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
-
-/***/ }),
-
-/***/ "./src/js/main.js?3207":
-/*!************************!*\
-  !*** ./src/js/main.js ***!
-  \************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-module.exports = __webpack_require__.p + "assets/286e0d00f099285c4c5b.js";
 
 /***/ }),
 
@@ -10224,10 +10851,15 @@ _global["default"]._babelPolyfill = true;
   !*** ./src/index.js ***!
   \**********************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _js_main__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/main */ "./src/js/main.js?f5d0");
-/* harmony import */ var _js_main__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_main__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _index_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.html */ "./src/index.html");
-/* harmony import */ var _scss_index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./scss/index.scss */ "./src/scss/index.scss");
+/* harmony import */ var _js_main__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/main */ "./src/js/main.js");
+/* harmony import */ var _js_task__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/task */ "./src/js/task.js");
+/* harmony import */ var _js_task__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_js_task__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _index_html__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.html */ "./src/index.html");
+/* harmony import */ var _scss_index_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./scss/index.scss */ "./src/scss/index.scss");
+/* harmony import */ var _js_tomatoTimer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/tomatoTimer */ "./src/js/tomatoTimer.js");
+/* harmony import */ var _js_tomatoTimer__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_js_tomatoTimer__WEBPACK_IMPORTED_MODULE_4__);
+
+
 
 
 
@@ -10235,4 +10867,4 @@ __webpack_require__.r(__webpack_exports__);
 
 /******/ })()
 ;
-//# sourceMappingURL=mainbc30146012607aa1a62a.js.map
+//# sourceMappingURL=mainf27806b7db269e7d4dc2.js.map
